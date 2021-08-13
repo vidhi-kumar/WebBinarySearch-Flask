@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <form action="/" method="POST">
+        <div class="my-3">
+        <label for="array" class="form-label">Enter Array</label>
+        <input type="text" class="form-control" id="array" name="array" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Make sure the array is sorted :)</div>
+        </div>
+        <div class="my-3">
+        <label for="item" class="form-label">Enter search value</label>
+        <input type="text" class="form-control" id="item" name="item" aria-describedby="emailHelp">
+        </div>
+        <header class="text-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </header>
+    </form>
+</div>
+{% if ans_array %}
+<div class="container my-3"><h3 class="display-6"><span class="badge bg-success">Result</span></h3></div>
+
+{% for array in ans_array %}
+<div class="container my-3">
+        <p class="lead">
+            {{array}}
+          </p>
+</div>
+{% endfor %}
+
+<div class="container my-3">
+    <p class="lead" style="color:crimson">If the last row is empty, your searched value was not found :(</p>
+        <p class="lead" style="color:green">If not, we have successfully found the searched value :)</p>
+        <p style="color: blue;">|| || : middle index value<br>
+        low and high index specied as well</p> 
+       
+{% else %}
+<div class="container my-3">
+    <h4 class="display-6 text-secondary">Waiting for input...</h4>
+</div> 
+{% endif %}
+{% endblock body %}
